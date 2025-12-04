@@ -7,29 +7,21 @@ import { askRiddle, measureSolveTime } from "../riddles/names.js";
 // let now = new Date();
 // let seconds =now.getSeconds()
 // console.log(seconds);
-let now = new Date();
-let secondsBefor = now.getSeconds();
-console.log(`secondsBefor ${secondsBefor}`);
 
-let now2 = new Date();
-let secondsAfter = now2.getSeconds();
-console.log(`secondsAfter ${secondsAfter}`);
-
-let time = secondsAfter + 1 - secondsBefor;
-console.log(`time: ${time}`);
-
-// function formatTime(number) {
-//     return number < 10 ? '0' + number : number;
-// }
 
 // let now = new Date();
-// let hours = formatTime(now.getHours());
-// let minutes = formatTime(now.getMinutes());
-// let seconds = formatTime(now.getSeconds());
+// let secondsBefor = now.getSeconds();
+// console.log(`secondsBefor ${secondsBefor}`);
 
-// console.log(`Current Time: ${hours}:${minutes}:${seconds}`);
+// let now2 = new Date();
+// let secondsAfter = now2.getSeconds();
+// +
+// console.log(`secondsAfter ${secondsAfter}`);
 
-// formatTime()
+// let time = secondsAfter + 1 - secondsBefor;
+// console.log(`time: ${time}`);
+
+
 
 console.log("wellcom to riddles game!!");
 
@@ -38,8 +30,12 @@ console.log(`hello ${name}`);
 const objectName = createPlayer(name);
 
 function main() {
+
   for (let riddle of list_riddles) {
     let time = measureSolveTime(() => askRiddle(riddle));
+    objectName.times.push(time)
+    console.log(objectName);
+    
     console.log(`cournt time ${time}`);
   }
 }

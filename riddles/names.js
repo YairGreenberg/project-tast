@@ -21,7 +21,16 @@ function addSolveTime(player, seconds) {
 // ניתן להוסיף תיקיות/קבצים/פונקציות עזר נוספות אם רוצים, אך אלה
 // חייבים להתקיים ולפעול כראוי.
 
-function showStats(player) {}
+function showStats(player) {
+      let now = Date.now();
+      let sum = 0;
+      for (let time of player.times)
+      {
+        sum +=  time
+      }
+
+
+}
 
 export function askRiddle(riddleObj) {
   let list = riddleObj.choices;
@@ -49,25 +58,17 @@ export function askRiddle(riddleObj) {
   // לאפשרות הנכונה.
 }
 
+
+
 export function measureSolveTime(fn) {
   let now = Date.now()
-  let secondsBefor = now.getSeconds();
   fn();
   let now2 =  Date.now();
-  let secondsAfter = now2.getSeconds();
   
-  let time = secondsAfter  -secondsBefor
+  let time = (now2  -now) / 1000;
   console.log(time);
   
   return time
-  //     ○ קלט: פונקציה (לדוגמה, פונקציה שקוראת ל-
-  // askRiddle).
-  // ○ התנהגות:
-  // ■ אחסון השעה הנוכחית לפני הפעלת הפונקציה.
-  // ■ הפעלת הפונקציה.
-  // ■ אחסון השעה הנוכחית לאחר סיומה.
-  // ■ החזרת ההפרש בשניות.
-  // ○ תשתמשו בזה כדי למדוד כמה זמן לוקח לפתור כל חידה.
-  // ניתן להוסיף פונקציות עזר נוספות במידת הצורך, אך הן חייבות להתקיים ולפעול כראוי.
+ 
+  
 }
-//fn(() => riddleObj);
