@@ -1,19 +1,15 @@
 import readlineSync from "readline-sync";
-import { createPlayer } from "../riddles/names.js";
 import { list_riddles } from "../riddles/all_riddles.js";
-import { askRiddle, measureSolveTime,addSolveTime,showStats } from "../riddles/names.js";
+import { createPlayer,askRiddle, measureSolveTime,addSolveTime,showStats } from "../riddles/names.js";
 
 
 
 
-console.table("wellcom to riddles game!!");
+console.log("welcome to riddles game!!");
 
-const name = readlineSync.question("\nwate your name? \n");
+const name = readlineSync.question("\nwhat your name? \n");
 console.log(`hello ${name}`);
 const objectName = createPlayer(name);
-
-
-
 
 
 
@@ -34,6 +30,4 @@ function main() {
 
 main();
 
-// Import all riddles using a single import (one statement, not one per
-// file).
 

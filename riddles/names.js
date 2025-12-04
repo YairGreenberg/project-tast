@@ -13,7 +13,6 @@ export function addSolveTime(player, seconds) {
 }
 
 export function showStats(player) {
-  let now = Date.now();
   let sum = 0;
   for (let time of player.times) {
     sum += time;
