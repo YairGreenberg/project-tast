@@ -8,28 +8,21 @@ export function createPlayer(name) {
   return objectName;
 }
 
-function addSolveTime(player, seconds) {
-  player[times] = seconds; //// or player.times
+export function addSolveTime(player, seconds) {
+  player.times.push(seconds);
 }
 
-//     ○ קלט: אובייקט שחקן.
-// ○ התנהגות:
-// ■ מחשב את הזמן הכולל
-// ■ מחשב את הזמן הממוצע לחידה (סה"כ חלקי
-// מספר החידות).
-// ■ מדפיס את שני הערכים למסוף בשניות.
-// ניתן להוסיף תיקיות/קבצים/פונקציות עזר נוספות אם רוצים, אך אלה
-// חייבים להתקיים ולפעול כראוי.
+export function showStats(player) {
+  let now = Date.now();
+  let sum = 0;
+  for (let time of player.times) {
+    sum += time;
+  }
+  let average = sum / player.times.length;
 
-function showStats(player) {
-      let now = Date.now();
-      let sum = 0;
-      for (let time of player.times)
-      {
-        sum +=  time
-      }
-
-
+  return `Total time to solve the puzzles: ${sum.toFixed(
+    2
+  )} The average \n for each puzzle: ${average.toFixed(2)}`;
 }
 
 export function askRiddle(riddleObj) {
@@ -41,7 +34,6 @@ export function askRiddle(riddleObj) {
   if (riddleObj.choices) {
     console.log(list);
   }
-  const answer = readlineSync.question("wate your answer? \n");
   let bool = true;
   while (bool) {
     const answer = readlineSync.question("wate your answer? \n");
@@ -51,24 +43,14 @@ export function askRiddle(riddleObj) {
       bool = false;
     }
   }
-
-  // ■ עבור חידות רגילות: השווה את הקלט ישירות ל-
-  // correctAnswer (השוואת מחרוזות).
-  // ■ עבור חידות רב-ברירה: השווה את מספר האפשרות שנבחרה
-  // לאפשרות הנכונה.
 }
 
-
-
 export function measureSolveTime(fn) {
-  let now = Date.now()
+  let now = Date.now();
   fn();
-  let now2 =  Date.now();
-  
-  let time = (now2  -now) / 1000;
-  console.log(time);
-  
-  return time
- 
-  
+  let now2 = Date.now();
+
+  let time = (now2 - now) / 1000;
+
+  return time;
 }
